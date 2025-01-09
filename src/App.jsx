@@ -1,7 +1,9 @@
 function App() {
     return (
-        <h2>shit shit </h2>
+        <main>
+            alsdjflasdjk
+        </main>
     )
 }
 
-export default App;
+export default App
