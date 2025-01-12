@@ -1,0 +1,194 @@
+:root {
+  /* Colors */
+
+  /* Neutral */
+
+  --almost-white: hsl(0, 0%, 98%);
+  --medium-gray: hsl(0, 0%, 41%);
+  --almost-black: hsl(0, 0%, 8%);
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--almost-white);
+  line-height: 1.5;
+  min-height: 100vh;
+  display: grid;
+  font-family: sans-serif;
+  /* place-items: center; */
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 4rem;
+  padding: 1.5rem 1.5rem 2rem;
+
+  button {
+    border: none;
+    background-color: transparent;
+  }
+}
+
+/* nabar ladies and gentlemen... */
+
+nav {
+  background-color: var(--almost-white);
+  position: absolute;
+  inset: 0 0 0 35%;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 1.5rem;
+  color: var(--medium-gray);
+  font-weight: 500;
+
+  button.close-menu {
+    align-self: end;
+  }
+
+  ul {
+    display: grid;
+    gap: 1.2rem;
+    list-style: none;
+  }
+
+  &>ul>li {
+    display: grid;
+    gap: 1.2rem;
+
+    ul {
+      margin-left: 1.2rem;
+
+      img {
+        width: 19px;
+      }
+    }
+
+    &:last-child {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  button:is(.login, .register) {
+    border: 1px var(--almost-black) solid;
+    color: var(--medium-gray);
+    width: 100%;
+    padding: .6rem 1.2rem;
+    border-radius: 15px;
+    font-weight: 500;
+  }
+
+  button.login {
+    border-color: transparent;
+  }
+
+  .flex {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+}
+
+
+section.info {
+  text-align: center;
+  display: grid;
+  place-items: center;
+  gap: 1.2rem;
+  padding: 2rem 1rem;
+
+  h1 {
+    font-size: clamp(2.1rem, 8vw, 2.5rem);
+  }
+
+  p {
+    color: var(--medium-gray);
+    font-size: clamp(1.15rem, 4.7vw, 1.5rem);
+  }
+
+  button {
+    padding: .8rem 1.2rem;
+    border: none;
+    background-color: var(--almost-black);
+    font: inherit;
+    color: var(--almost-white);
+    font-weight: 600;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+  }
+
+  ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin-bottom: 2rem;
+  }
+}
+
+/* desktop */
+@media (min-width: 65em) {
+  nav {
+    flex: 1;
+    position: static;
+    flex-direction: row;
+    padding: 0;
+
+    button.close-menu {
+      display: none;
+    }
+
+    &>ul {
+      grid-template-columns: 100px 100px 1fr 1fr;
+      align-items: start;
+      gap: 2rem;
+      position: relative;
+
+      .features,
+      .company {
+        margin-left: 0;
+        background-color: white;
+        padding: 1.5rem;
+        border-radius: 15px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .05);
+        position: absolute;
+        top: 50px;
+      }
+
+      .features {
+        left: -70px;
+      }
+    }
+
+    button:is(.login, .register) {
+      width: auto;
+    }
+
+    button.login {
+      margin-left: auto;
+    }
+  }
+
+  button.open-menu {
+    display: none;
+  }
+}
