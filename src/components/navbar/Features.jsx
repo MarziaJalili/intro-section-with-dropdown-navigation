@@ -32,9 +32,11 @@ function Features() {
 
     const features = details.map(detail => {
         return (
-            <li className="flex">
-                <img src={detail.img.src} alt={detail.img.alt} />
-                {detail.name}
+            <li key={detail.name}>
+                <a className="flex" href="#">
+                    <img src={detail.img.src} alt={detail.img.alt} />
+                    {detail.name}
+                </a>
             </li>
         )
     })

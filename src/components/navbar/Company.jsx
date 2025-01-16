@@ -7,8 +7,10 @@ function Company() {
 
     const features = details.map(detail => {
         return (
-            <li>
-                {detail.name}
+            <li key={detail.name}>
+                <a href="#">
+                    {detail.name}
+                </a>
             </li>
         )
     })

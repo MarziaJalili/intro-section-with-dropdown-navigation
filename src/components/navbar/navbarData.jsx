@@ -6,27 +6,23 @@ const navbarData = [
   {
     id: 1,
     name: "Features",
-    button: {
-      src: "./images/icon-arrow-down.svg",
-      alt: "icon-arrow-down"
-    },
-    details: <Features />
+    button: true,
+    details: <Features />,
+    detailsShown: false
   },
   {
     id: 2,
     name: "Company",
-    button: {
-      src: "./images/icon-arrow-down.svg",
-      alt: "icon-arrow-down"
-    },
-    details: <Company />
-  },
-  {
-    id: 2,
-    name: "Careers",
+    button: true,
+    details: <Company />,
+    detailsShown: false
   },
   {
     id: 3,
+    name: "Careers",
+  },
+  {
+    id: 4,
     name: "About",
   }
 ];

@@ -1,8 +1,8 @@
 import NavItems from "./NavItems";
-function Navbar() {
+function Navbar(props) {
     return (
         <nav>
-            <button className="close-menu">
+            <button onClick={props.onClick} className="close-menu">
                 <img src="./images/icon-close-menu.svg" alt="" />
             </button>
             <NavItems />

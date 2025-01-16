@@ -1,20 +1,48 @@
 import navbarData from "./navbarData";
+import { useState } from "react";
 
 function NavItems() {
-    const items = navbarData.map(item => {
-        return (
-            <li>
-                <span className="flex">
-                    {item.name}
-                    {item.button ? <button><img src={item.button.src} alt={item.button.alt} /></button> : null}
-                </span>
-                {item.details ? item.details : null}
-            </li>
-        )
-    })
+  const [navbarItems, setNavbarItems] = useState(navbarData);
+
+  function handleClick(id) {
+    setNavbarItems(prev => prev.map(item => {
+      return item.id === id ?
+        { ...item, detailsShown: !item.detailsShown }
+        : item;
+    }));
+  }
+
+  const items = navbarItems.map(item => {
+    const arrowIcon = item.detailsShown ? {
+      src: "./images/icon-arrow-up.svg",
+      alt: "icon-arrow-up"
+    }
+      : {
+        src: "./images/icon-arrow-down.svg",
+        alt: "icon-arrow-down"
+      }
+
     return (
-        <ul>{items}</ul>
+      <li key={item.id}>
+        <a href="#" className="flex" onClick={() => { handleClick(item.id) }}>
+          {item.name}
+
+          {item.button ?
+            <button>
+              <img src={arrowIcon.src} alt={arrowIcon.alt} />
+            </button> : null}
+        </a>
+
+        {item.detailsShown ?
+          item.details ?
+            item.details
+            : null : null}
+      </li>
     )
+  })
+  return (
+    <ul>{items}</ul>
+  )
 }
 
 export default NavItems;

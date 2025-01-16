@@ -6,6 +6,7 @@
   --almost-white: hsl(0, 0%, 98%);
   --medium-gray: hsl(0, 0%, 41%);
   --almost-black: hsl(0, 0%, 8%);
+  --gray-50: hsla(0, 0%, 8%, .5);
 }
 
 *,
@@ -17,12 +18,25 @@
 }
 
 body {
+  font-family: "Epilogue", sans-serif;
   background-color: var(--almost-white);
   line-height: 1.5;
   min-height: 100vh;
   display: grid;
-  font-family: sans-serif;
-  /* place-items: center; */
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: var(--gray-50);
+  display: none;
+}
+
+body.faded::before {
+  display: block;
 }
 
 img {
@@ -30,9 +44,17 @@ img {
   display: block;
 }
 
+a,
 button {
   font: inherit;
   cursor: pointer;
+  color: var(--medium-gray);
+  text-decoration: none;
+  transition: color .1s;
+
+  &:hover {
+    color: var(--almost-black);
+  }
 }
 
 header {
@@ -59,7 +81,6 @@ nav {
   flex-direction: column;
   align-items: start;
   gap: 1.5rem;
-  color: var(--medium-gray);
   font-weight: 500;
 
   button.close-menu {
@@ -74,13 +95,14 @@ nav {
 
   &>ul>li {
     display: grid;
-    gap: 1.2rem;
+    gap: 1.5rem;
 
     ul {
       margin-left: 1.2rem;
+      color: var(--medium-gray);
 
       img {
-        width: 19px;
+        width: 18px;
       }
     }
 
@@ -89,9 +111,9 @@ nav {
     }
   }
 
+
   button:is(.login, .register) {
-    border: 1px var(--almost-black) solid;
-    color: var(--medium-gray);
+    border: 2px var(--almost-black) solid;
     width: 100%;
     padding: .6rem 1.2rem;
     border-radius: 15px;
@@ -109,21 +131,25 @@ nav {
   }
 }
 
+picture img {
+  width: 100%;
+  position: center;
+}
 
 section.info {
   text-align: center;
   display: grid;
   place-items: center;
-  gap: 1.2rem;
+  gap: 1rem;
   padding: 2rem 1rem;
 
   h1 {
-    font-size: clamp(2.1rem, 8vw, 2.5rem);
+    font-size: clamp(2.1rem, 8vw, 4.5rem);
   }
 
   p {
     color: var(--medium-gray);
-    font-size: clamp(1.15rem, 4.7vw, 1.5rem);
+    font-size: clamp(1.15rem, 4vw, 1.4rem);
   }
 
   button {
@@ -134,23 +160,36 @@ section.info {
     color: var(--almost-white);
     font-weight: 600;
     border-radius: 12px;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
+    border: 2px solid transparent;
+    transition: all .3s;
+
+    &:hover {
+      border-color: var(--almost-black);
+      color: var(--almost-black);
+      background-color: transparent;
+    }
   }
 
   ul {
     display: flex;
     gap: 2rem;
     list-style: none;
-    margin-bottom: 2rem;
   }
 }
 
-/* desktop */
-@media (min-width: 65em) {
+/* tablate*/
+@media (min-width: 820px) {
+  main p {
+    max-width: 500px;
+  }
+
+  /* navbar */
   nav {
     flex: 1;
     position: static;
     flex-direction: row;
+    justify-content: space-between;
     padding: 0;
 
     button.close-menu {
@@ -169,9 +208,10 @@ section.info {
         background-color: white;
         padding: 1.5rem;
         border-radius: 15px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, .05);
+        box-shadow: 0 0 10px rgba(0, 0, 0, .2);
         position: absolute;
         top: 50px;
+        z-index: 100;
       }
 
       .features {
@@ -181,6 +221,7 @@ section.info {
 
     button:is(.login, .register) {
       width: auto;
+      margin-top: -10px;
     }
 
     button.login {
@@ -190,5 +231,62 @@ section.info {
 
   button.open-menu {
     display: none;
+  }
+}
+
+/* desktop */
+@media (min-width: 65em) {
+  .main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+  main {
+    display: grid;
+    margin-inline: 4rem;
+    gap: 6rem;
+    grid-template-columns: 1fr 480px;
+    place-items: center;
+  }
+
+
+  picture {
+    grid-column: 2/3;
+
+    &,
+    img {
+      height: 100%;
+      max-height: 600px;
+    }
+  }
+
+  section.info {
+    grid-column: 1/2;
+    height: 100%;
+    grid-row: 1;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+    padding: 7rem 0 0;
+    gap: 1.5rem;
+
+    max-width: 500px;
+
+    h1 {
+      line-height: 1;
+    }
+
+    button {
+      margin-bottom: auto;
+    }
+
+    ul {
+      margin: 0;
+    }
+
   }
 }
