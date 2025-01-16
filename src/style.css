@@ -145,6 +145,7 @@ section.info {
 
   h1 {
     font-size: clamp(2.1rem, 8vw, 4.5rem);
+
   }
 
   p {
@@ -278,6 +279,10 @@ section.info {
 
     h1 {
       line-height: 1;
+
+      .make {
+        display: block;
+      }
     }
 
     button {

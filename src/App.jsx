@@ -16,7 +16,7 @@ function App() {
                     </picture>
 
                     <section className="info">
-                        <h1>Make remote work</h1>
+                        <h1><span className="make">Make</span> remote work</h1>
 
                         <p>Get your team in sync, no matter your location. Streamline processes, create team rituals, and watch productivity soar.</p>
 
