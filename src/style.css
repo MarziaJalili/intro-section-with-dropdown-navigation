@@ -7,6 +7,7 @@
   --medium-gray: hsl(0, 0%, 41%);
   --almost-black: hsl(0, 0%, 8%);
   --gray-50: hsla(0, 0%, 8%, .5);
+  --gold: rgb(228, 194, 0);
 }
 
 *,
@@ -24,6 +25,7 @@ body {
   min-height: 100vh;
   display: grid;
   position: relative;
+
 }
 
 body::before {
@@ -33,6 +35,7 @@ body::before {
   width: 100%;
   background-color: var(--gray-50);
   display: none;
+
 }
 
 body.faded::before {
@@ -50,7 +53,7 @@ button {
   cursor: pointer;
   color: var(--medium-gray);
   text-decoration: none;
-  transition: color .1s;
+  transition: color .2s;
 
   &:hover {
     color: var(--almost-black);
@@ -70,7 +73,7 @@ header {
   }
 }
 
-/* nabar ladies and gentlemen... */
+/* navbar ladies and gentlemen... */
 
 nav {
   background-color: var(--almost-white);
@@ -82,6 +85,7 @@ nav {
   align-items: start;
   gap: 1.5rem;
   font-weight: 500;
+  font-size: clamp(1rem, 3vw, 1.1rem);
 
   button.close-menu {
     align-self: end;
@@ -179,8 +183,19 @@ section.info {
   }
 }
 
+.mood {
+  position: absolute;
+  top: -15%;
+  left: 100%;
+}
+
 /* tablate*/
 @media (min-width: 820px) {
+  .mood {
+    top: 150%;
+    left: 0;
+  }
+
   main p {
     max-width: 500px;
   }
@@ -192,13 +207,14 @@ section.info {
     flex-direction: row;
     justify-content: space-between;
     padding: 0;
+    gap: 0;
 
     button.close-menu {
       display: none;
     }
 
     &>ul {
-      grid-template-columns: 100px 100px 1fr 1fr;
+      grid-template-columns: 110px 110px 1fr 1fr;
       align-items: start;
       gap: 2rem;
       position: relative;
@@ -224,6 +240,7 @@ section.info {
       width: auto;
       margin-top: -10px;
     }
+
 
     button.login {
       margin-left: auto;
@@ -293,5 +310,56 @@ section.info {
       margin: 0;
     }
 
+  }
+}
+
+.grid {
+  display: grid;
+  position: relative;
+}
+
+body.dark {
+  /* dark mood */
+  background-color: var(--almost-black);
+
+  svg {
+    fill: var(--gold);
+  }
+
+  h1 {
+    color: var(--gold);
+  }
+
+  nav {
+    background-color: var(--almost-black);
+
+    @media (min-width: 820px) {
+
+      .company,
+      .features {
+        background-color: black;
+      }
+    }
+
+  }
+
+  a,
+  button {
+    &:hover {
+      color: var(--gold);
+    }
+  }
+
+  section.info .learn-more,
+  nav .register {
+    color: var(--medium-gray);
+    border-color: var(--medium-gray);
+    transition: all .4s;
+
+    &:hover {
+      background-color: var(--gold);
+      color: var(--almost-black);
+      border-color: transparent;
+    }
   }
 }

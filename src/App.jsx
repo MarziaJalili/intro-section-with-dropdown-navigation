@@ -20,7 +20,7 @@ function App() {
 
                         <p>Get your team in sync, no matter your location. Streamline processes, create team rituals, and watch productivity soar.</p>
 
-                        <button>Learn more</button>
+                        <button className="learn-more">Learn more</button>
 
                         <Companies />
                     </section>
