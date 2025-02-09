@@ -7,9 +7,16 @@ function Header() {
 
     // finding out the current screen size...
     useEffect(() => {
-        window.addEventListener("resize", () => {
+        const handleResize = () => {
             setScreenSize(window.innerWidth);
-        })
+        };
+
+        window.addEventListener("resize", handleResize)
+
+        // Clean up the event listener when the component unmounts
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
     }, []);
 
     // toggling the navbar on and off for smaller screen sizes...

@@ -38,6 +38,7 @@ body::before {
 
 }
 
+
 body.faded::before {
   display: block;
 }
@@ -318,9 +319,16 @@ section.info {
   position: relative;
 }
 
+/* dark mood */
 body.dark {
-  /* dark mood */
-  background-color: var(--almost-black);
+  .all-content {
+
+    animation: showContent 1s ease-in-out 1 forwards;
+    background-color: var(--almost-black);
+    min-width: 100%;
+    min-height: 100%;
+  }
+
 
   svg {
     fill: var(--gold);
@@ -361,5 +369,16 @@ body.dark {
       color: var(--almost-black);
       border-color: transparent;
     }
+  }
+}
+
+@keyframes showContent {
+  from {
+    clip-path: circle(0% at 0% 0%);
+  }
+
+  to {
+    clip-path: circle(200% at 0% 50%);
+
   }
 }

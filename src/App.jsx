@@ -2,10 +2,9 @@ import Header from "./components/Header"
 import Companies from "./components/Companies"
 import "./style.css"
 function App() {
-
-
     return (
-        <>
+        // to add the clip function everthing has to be in one element...
+        <div class="all-content">
             <Header />
             <div className="main">
                 <main>
@@ -26,7 +25,7 @@ function App() {
                     </section>
                 </main>
             </div>
-        </>
+        </div>
     )
 }
 
