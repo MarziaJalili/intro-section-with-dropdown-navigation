@@ -387,22 +387,22 @@ body.dark {
 
 @keyframes showContent {
   from {
-    clip-path: circle(0% at 0% 0%);
+    clip-path: circle(0% at 5% 10%);
   }
 
   to {
-    clip-path: circle(200% at 0% 50%);
+    clip-path: circle(200% at 0% 0%);
 
   }
 }
 
 @keyframes showContentBright {
   from {
-    clip-path: circle(0% at 0% 0%);
+    clip-path: circle(0% at 5% 10%);
   }
 
   to {
-    clip-path: circle(200% at 0% 50%);
+    clip-path: circle(200% at 0% 0%);
 
   }
 }
