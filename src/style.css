@@ -20,12 +20,11 @@
 
 body {
   font-family: "Epilogue", sans-serif;
-  background-color: var(--almost-white);
   line-height: 1.5;
   min-height: 100vh;
   display: grid;
   position: relative;
-
+  background-color: var(--almost-white);
 }
 
 body::before {
@@ -118,7 +117,7 @@ nav {
 
 
   button:is(.login, .register) {
-    border: 2px var(--almost-black) solid;
+    border: 2px var(--medium-gray) solid;
     width: 100%;
     padding: .6rem 1.2rem;
     border-radius: 15px;
@@ -319,10 +318,24 @@ section.info {
   position: relative;
 }
 
+
+/* bright mood */
+body.bright {
+  background-color: var(--almost-black);
+
+  .all-content {
+    background-color: var(--almost-white);
+    animation: showContentBright 1s ease-in-out 1 forwards;
+    min-width: 100%;
+    min-height: 100%;
+  }
+}
+
 /* dark mood */
 body.dark {
-  .all-content {
+  background-color: var(--almost-white);
 
+  .all-content {
     animation: showContent 1s ease-in-out 1 forwards;
     background-color: var(--almost-black);
     min-width: 100%;
@@ -373,6 +386,17 @@ body.dark {
 }
 
 @keyframes showContent {
+  from {
+    clip-path: circle(0% at 0% 0%);
+  }
+
+  to {
+    clip-path: circle(200% at 0% 50%);
+
+  }
+}
+
+@keyframes showContentBright {
   from {
     clip-path: circle(0% at 0% 0%);
   }
